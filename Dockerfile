@@ -1,12 +1,10 @@
-FROM ubuntu:latest
-MAINTAINER Patricio Quintero "patricio.quintero@globant.com"
+FROM alpine:latest
+MAINTAINER "Patricio Quintero <patricio.quintero@globant.com>"
 
-WORKDIR /bdp-workflow
+WORKDIR /bdp-workflow/
 
 COPY [".", "/bdp-workflow/"]
 
-RUN apt-get -y update
+ENTRYPOINT ["/bin/sh","00.sh"]
 
-RUN ls -la
-
-CMD ["/bin/bash", "00.sh"]
+CMD ["build","latest","simple-test-job"]
